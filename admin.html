@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>网站后台 · 李淑雁 / WENTING 视觉作品集</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <div class="admin-brand">
+        <p class="admin-kicker">LISHUYAN / WENTING · CONTENT MANAGER</p>
+        <h1>网站内容后台</h1>
+        <p class="admin-sub">编辑左侧内容，右侧实时预览；点击「保存修改」后，前台刷新即生效。</p>
+      </div>
+      <div class="admin-actions">
+        <span id="save-status" class="save-status">未保存</span>
+        <button class="ghost-button" id="import-button" type="button">导入 JSON</button>
+        <button class="ghost-button" id="export-button" type="button">导出 JSON</button>
+        <button class="secondary-button" id="reset-button" type="button">恢复默认</button>
+        <button class="primary-button" id="save-button" type="button">保存修改</button>
+        <input type="file" id="import-file" accept="application/json,.json" hidden />
+      </div>
+    </header>
+
+    <div class="admin-layout">
+      <aside class="control-panel" id="control-panel" aria-label="内容编辑区">
+
+        <!-- ============ 品牌与基础 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>01</span><h2>品牌与基础</h2></div>
+          <label>品牌名（导航栏与页首）
+            <input type="text" data-path="brand" placeholder="WENTING" />
+          </label>
+          <label>品牌后缀
+            <input type="text" data-path="brandSuffix" placeholder="/ VISUALS" />
+          </label>
+          <label>浏览器标签页标题
+            <input type="text" data-path="pageTitle" placeholder="李淑雁 LISHUYAN — 视觉作品集" />
+          </label>
+        </section>
+
+        <!-- ============ 第一幕 · 开场 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>02</span><h2>第一幕 · 开场画面</h2></div>
+          <label>眉题（eyebrow）
+            <input type="text" data-path="content.scene0Eyebrow" />
+          </label>
+          <div class="field-pair">
+            <label>主标题 第一行
+              <input type="text" data-path="content.scene0TitleA" />
+            </label>
+            <label>主标题 强调行
+              <input type="text" data-path="content.scene0TitleB" />
+            </label>
+          </div>
+          <label>导语（hero intro）
+            <textarea data-path="content.heroIntro" rows="2"></textarea>
+          </label>
+        </section>
+
+        <!-- ============ 第二幕 · 关于我 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>03</span><h2>第二幕 · 关于我</h2></div>
+          <label>眉题
+            <input type="text" data-path="content.scene1Eyebrow" />
+          </label>
+          <label>姓名
+            <input type="text" data-path="content.aboutTitle" />
+          </label>
+          <div class="field-pair">
+            <label>标语 第一行
+              <input type="text" data-path="content.aboutTaglineA" />
+            </label>
+            <label>标语 第二行
+              <input type="text" data-path="content.aboutTaglineB" />
+            </label>
+          </div>
+          <label>角色 / 职位
+            <input type="text" data-path="content.aboutRole" />
+          </label>
+          <label>个人简介（回车换行）
+            <textarea data-path="content.aboutIntro" rows="4"></textarea>
+          </label>
+          <div class="sub-heading">粉丝数据（两组）</div>
+          <div class="field-pair">
+            <label>标签 ①
+              <input type="text" data-path="content.creatorSummary.0.label" />
+            </label>
+            <label>数值 ①
+              <input type="text" data-path="content.creatorSummary.0.value" />
+            </label>
+          </div>
+          <div class="field-pair">
+            <label>标签 ②
+              <input type="text" data-path="content.creatorSummary.1.label" />
+            </label>
+            <label>数值 ②
+              <input type="text" data-path="content.creatorSummary.1.value" />
+            </label>
+          </div>
+          <label>技能标签（用英文逗号分隔）
+            <input type="text" data-path="content.skills" data-type="list" placeholder="Ps, Ai, Ae, C4D, Blender" />
+          </label>
+          <label>「和我聊聊」按钮文字
+            <input type="text" data-path="content.chatLink" />
+          </label>
+        </section>
+
+        <!-- ============ 第三幕 · 职业经历 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>04</span><h2>第三幕 · 职业经历</h2></div>
+          <div class="field-pair">
+            <label>标题 第一行
+              <input type="text" data-path="content.scene2TitleA" />
+            </label>
+            <label>标题 第二行
+              <input type="text" data-path="content.scene2TitleB" />
+            </label>
+          </div>
+          <div class="sub-heading">经历条目（三条）</div>
+          <fieldset class="entry-block">
+            <legend>经历 ①</legend>
+            <label>时间
+              <input type="text" data-path="content.career.0.period" />
+            </label>
+            <label>职位
+              <input type="text" data-path="content.career.0.role" />
+            </label>
+            <label>公司
+              <input type="text" data-path="content.career.0.company" />
+            </label>
+            <label>描述
+              <input type="text" data-path="content.career.0.desc" />
+            </label>
+          </fieldset>
+          <fieldset class="entry-block">
+            <legend>经历 ②</legend>
+            <label>时间
+              <input type="text" data-path="content.career.1.period" />
+            </label>
+            <label>职位
+              <input type="text" data-path="content.career.1.role" />
+            </label>
+            <label>公司
+              <input type="text" data-path="content.career.1.company" />
+            </label>
+            <label>描述
+              <input type="text" data-path="content.career.1.desc" />
+            </label>
+          </fieldset>
+          <fieldset class="entry-block">
+            <legend>经历 ③</legend>
+            <label>时间
+              <input type="text" data-path="content.career.2.period" />
+            </label>
+            <label>职位
+              <input type="text" data-path="content.career.2.role" />
+            </label>
+            <label>公司
+              <input type="text" data-path="content.career.2.company" />
+            </label>
+            <label>描述
+              <input type="text" data-path="content.career.2.desc" />
+            </label>
+          </fieldset>
+          <label>「查看精选作品」按钮文字
+            <input type="text" data-path="content.worksLink" />
+          </label>
+          <div class="field-pair">
+            <label>首屏署名
+              <input type="text" data-path="content.heroName" />
+            </label>
+          </div>
+        </section>
+
+        <!-- ============ 作品区标题 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>05</span><h2>作品区 · 标题</h2></div>
+          <div class="field-pair">
+            <label>主标题（Selected）
+              <input type="text" data-path="content.worksTitle" />
+            </label>
+            <label>强调词（works.）
+              <input type="text" data-path="content.worksItalic" />
+            </label>
+          </div>
+          <div class="field-pair">
+            <label>侧栏 第一行
+              <input type="text" data-path="content.worksAsideLine1" />
+            </label>
+            <label>侧栏 第二行
+              <input type="text" data-path="content.worksAsideLine2" />
+            </label>
+          </div>
+          <label>侧栏标签
+            <input type="text" data-path="content.worksAsideTag" />
+          </label>
+          <div class="field-pair">
+            <label>「更多视觉探索」标题
+              <input type="text" data-path="content.collectionHeading" />
+            </label>
+            <label>副标题
+              <input type="text" data-path="content.collectionSub" />
+            </label>
+          </div>
+        </section>
+
+        <!-- ============ 精选作品 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>06</span><h2>精选作品（三件）</h2></div>
+
+          <fieldset class="entry-block">
+            <legend>精选作品 ①</legend>
+            <div class="field-pair">
+              <label>编号
+                <input type="text" data-path="projects.featured.0.number" placeholder="01" />
+              </label>
+              <label>标题
+                <input type="text" data-path="projects.featured.0.title" />
+              </label>
+            </div>
+            <div class="field-pair">
+              <label>分类
+                <input type="text" data-path="projects.featured.0.category" />
+              </label>
+              <label>角色
+                <input type="text" data-path="projects.featured.0.role" />
+              </label>
+            </div>
+            <div class="upload-row">
+              <label>封面图路径 / 上传
+                <input type="text" data-path="projects.featured.0.cover" data-url-input="projects.featured.0.cover" />
+              </label>
+              <label class="upload-button">选择图片<input type="file" data-upload="projects.featured.0.cover" accept="image/*" hidden /></label>
+            </div>
+            <label class="check-row"><input type="checkbox" data-path="projects.featured.0.behance" /><span>显示「Behance 精选」徽标</span></label>
+            <label>Behance 徽标文字
+              <input type="text" data-path="projects.featured.0.behanceText" />
+            </label>
+            <label>「查看项目」文字（留空则不显示）
+              <input type="text" data-path="projects.featured.0.openText" />
+            </label>
+            <label>弹窗介绍
+              <textarea data-path="projects.featured.0.description" rows="3"></textarea>
+            </label>
+            <label>弹窗标签（逗号分隔）
+              <input type="text" data-path="projects.featured.0.tags" data-type="list" />
+            </label>
+          </fieldset>
+
+          <fieldset class="entry-block">
+            <legend>精选作品 ②</legend>
+            <div class="field-pair">
+              <label>编号
+                <input type="text" data-path="projects.featured.1.number" placeholder="02" />
+              </label>
+              <label>标题
+                <input type="text" data-path="projects.featured.1.title" />
+              </label>
+            </div>
+            <div class="field-pair">
+              <label>分类
+                <input type="text" data-path="projects.featured.1.category" />
+              </label>
+              <label>角色
+                <input type="text" data-path="projects.featured.1.role" />
+              </label>
+            </div>
+            <div class="upload-row">
+              <label>封面图路径 / 上传
+                <input type="text" data-path="projects.featured.1.cover" data-url-input="projects.featured.1.cover" />
+              </label>
+              <label class="upload-button">选择图片<input type="file" data-upload="projects.featured.1.cover" accept="image/*" hidden /></label>
+            </div>
+            <label class="check-row"><input type="checkbox" data-path="projects.featured.1.behance" /><span>显示「Behance 精选」徽标</span></label>
+            <label>Behance 徽标文字
+              <input type="text" data-path="projects.featured.1.behanceText" />
+            </label>
+            <label>「查看项目」文字（留空则不显示）
+              <input type="text" data-path="projects.featured.1.openText" />
+            </label>
+            <label>弹窗介绍
+              <textarea data-path="projects.featured.1.description" rows="3"></textarea>
+            </label>
+            <label>弹窗标签（逗号分隔）
+              <input type="text" data-path="projects.featured.1.tags" data-type="list" />
+            </label>
+          </fieldset>
+
+          <fieldset class="entry-block">
+            <legend>精选作品 ③</legend>
+            <div class="field-pair">
+              <label>编号
+                <input type="text" data-path="projects.featured.2.number" placeholder="03" />
+              </label>
+              <label>标题
+                <input type="text" data-path="projects.featured.2.title" />
+              </label>
+            </div>
+            <div class="field-pair">
+              <label>分类
+                <input type="text" data-path="projects.featured.2.category" />
+              </label>
+              <label>角色
+                <input type="text" data-path="projects.featured.2.role" />
+              </label>
+            </div>
+            <div class="upload-row">
+              <label>封面图路径 / 上传
+                <input type="text" data-path="projects.featured.2.cover" data-url-input="projects.featured.2.cover" />
+              </label>
+              <label class="upload-button">选择图片<input type="file" data-upload="projects.featured.2.cover" accept="image/*" hidden /></label>
+            </div>
+            <label class="check-row"><input type="checkbox" data-path="projects.featured.2.behance" /><span>显示「Behance 精选」徽标</span></label>
+            <label>Behance 徽标文字
+              <input type="text" data-path="projects.featured.2.behanceText" />
+            </label>
+            <label>「查看项目」文字（留空则不显示）
+              <input type="text" data-path="projects.featured.2.openText" />
+            </label>
+            <label>弹窗介绍
+              <textarea data-path="projects.featured.2.description" rows="3"></textarea>
+            </label>
+            <label>弹窗标签（逗号分隔）
+              <input type="text" data-path="projects.featured.2.tags" data-type="list" />
+            </label>
+          </fieldset>
+        </section>
+
+        <!-- ============ 更多视觉探索 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>07</span><h2>更多视觉探索（三件）</h2></div>
+
+          <fieldset class="entry-block">
+            <legend>探索 ①</legend>
+            <div class="field-pair">
+              <label>标题
+                <input type="text" data-path="projects.collection.0.title" />
+              </label>
+              <label>分类
+                <input type="text" data-path="projects.collection.0.category" />
+              </label>
+            </div>
+            <div class="field-pair">
+              <label>数量文案（如 8 件）
+                <input type="text" data-path="projects.collection.0.count" />
+              </label>
+              <label>图标样式
+                <select data-path="projects.collection.0.icon">
+                  <option value="video">视频</option>
+                  <option value="grid">方格</option>
+                  <option value="circle">圆点</option>
+                </select>
+              </label>
+            </div>
+            <div class="upload-row">
+              <label>封面图路径 / 上传
+                <input type="text" data-path="projects.collection.0.cover" data-url-input="projects.collection.0.cover" />
+              </label>
+              <label class="upload-button">选择图片<input type="file" data-upload="projects.collection.0.cover" accept="image/*" hidden /></label>
+            </div>
+            <label>弹窗介绍
+              <textarea data-path="projects.collection.0.description" rows="3"></textarea>
+            </label>
+            <label>弹窗标签（逗号分隔）
+              <input type="text" data-path="projects.collection.0.tags" data-type="list" />
+            </label>
+          </fieldset>
+
+          <fieldset class="entry-block">
+            <legend>探索 ②</legend>
+            <div class="field-pair">
+              <label>标题
+                <input type="text" data-path="projects.collection.1.title" />
+              </label>
+              <label>分类
+                <input type="text" data-path="projects.collection.1.category" />
+              </label>
+            </div>
+            <div class="field-pair">
+              <label>数量文案（如 2 件）
+                <input type="text" data-path="projects.collection.1.count" />
+              </label>
+              <label>图标样式
+                <select data-path="projects.collection.1.icon">
+                  <option value="video">视频</option>
+                  <option value="grid">方格</option>
+                  <option value="circle">圆点</option>
+                </select>
+              </label>
+            </div>
+            <div class="upload-row">
+              <label>封面图路径 / 上传
+                <input type="text" data-path="projects.collection.1.cover" data-url-input="projects.collection.1.cover" />
+              </label>
+              <label class="upload-button">选择图片<input type="file" data-upload="projects.collection.1.cover" accept="image/*" hidden /></label>
+            </div>
+            <label>弹窗介绍
+              <textarea data-path="projects.collection.1.description" rows="3"></textarea>
+            </label>
+            <label>弹窗标签（逗号分隔）
+              <input type="text" data-path="projects.collection.1.tags" data-type="list" />
+            </label>
+          </fieldset>
+
+          <fieldset class="entry-block">
+            <legend>探索 ③</legend>
+            <div class="field-pair">
+              <label>标题
+                <input type="text" data-path="projects.collection.2.title" />
+              </label>
+              <label>分类
+                <input type="text" data-path="projects.collection.2.category" />
+              </label>
+            </div>
+            <div class="field-pair">
+              <label>数量文案（如 26 件）
+                <input type="text" data-path="projects.collection.2.count" />
+              </label>
+              <label>图标样式
+                <select data-path="projects.collection.2.icon">
+                  <option value="video">视频</option>
+                  <option value="grid">方格</option>
+                  <option value="circle">圆点</option>
+                </select>
+              </label>
+            </div>
+            <div class="upload-row">
+              <label>封面图路径 / 上传
+                <input type="text" data-path="projects.collection.2.cover" data-url-input="projects.collection.2.cover" />
+              </label>
+              <label class="upload-button">选择图片<input type="file" data-upload="projects.collection.2.cover" accept="image/*" hidden /></label>
+            </div>
+            <label>弹窗介绍
+              <textarea data-path="projects.collection.2.description" rows="3"></textarea>
+            </label>
+            <label>弹窗标签（逗号分隔）
+              <input type="text" data-path="projects.collection.2.tags" data-type="list" />
+            </label>
+          </fieldset>
+        </section>
+
+
+        <!-- ============ 联系信息 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>09</span><h2>联系信息</h2></div>
+          <label>眉题
+            <input type="text" data-path="content.contactKicker" />
+          </label>
+          <label>引导语（contact lead）
+            <input type="text" data-path="content.contactLead" />
+          </label>
+          <div class="field-pair">
+            <label>大标题 第一行
+              <input type="text" data-path="content.contactHeading1" />
+            </label>
+            <label>大标题 第二行
+              <input type="text" data-path="content.contactHeading2" />
+            </label>
+          </div>
+          <div class="field-pair">
+            <label>邮箱
+              <input type="text" data-path="content.email" />
+            </label>
+            <label>微信号
+              <input type="text" data-path="content.wechat" />
+            </label>
+          </div>
+          <div class="sub-heading">社交链接（三条）</div>
+          <fieldset class="entry-block">
+            <legend>社交 ①</legend>
+            <div class="field-pair">
+              <label>平台名
+                <input type="text" data-path="socials.0.name" />
+              </label>
+              <label>副标题
+                <input type="text" data-path="socials.0.sub" />
+              </label>
+            </div>
+            <label>链接地址
+              <input type="text" data-path="socials.0.url" />
+            </label>
+          </fieldset>
+          <fieldset class="entry-block">
+            <legend>社交 ②</legend>
+            <div class="field-pair">
+              <label>平台名
+                <input type="text" data-path="socials.1.name" />
+              </label>
+              <label>副标题
+                <input type="text" data-path="socials.1.sub" />
+              </label>
+            </div>
+            <label>链接地址
+              <input type="text" data-path="socials.1.url" />
+            </label>
+          </fieldset>
+          <fieldset class="entry-block">
+            <legend>社交 ③</legend>
+            <div class="field-pair">
+              <label>平台名
+                <input type="text" data-path="socials.2.name" />
+              </label>
+              <label>副标题
+                <input type="text" data-path="socials.2.sub" />
+              </label>
+            </div>
+            <label>链接地址
+              <input type="text" data-path="socials.2.url" />
+            </label>
+          </fieldset>
+        </section>
+
+        <!-- ============ 项目弹窗 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>10</span><h2>项目弹窗（默认内容）</h2></div>
+          <label>默认标题
+            <input type="text" data-path="modal.title" />
+          </label>
+        </section>
+
+        <!-- ============ 页脚 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>11</span><h2>页脚</h2></div>
+          <label>左侧版权
+            <input type="text" data-path="content.footerLeft" />
+          </label>
+          <label>中间标注
+            <input type="text" data-path="content.footerMid" />
+          </label>
+        </section>
+
+        <!-- ============ 视觉与排版 ============ -->
+        <section class="control-group">
+          <div class="group-heading"><span>13</span><h2>视觉与排版</h2></div>
+          <div class="sub-heading">颜色</div>
+          <div class="color-row">
+            <label>主背景（ink）
+              <input type="color" data-path="colors.ink" data-color-input="colors.ink" />
+              <input type="text" data-path="colors.ink" class="color-text" />
+            </label>
+            <label>次背景（inkSoft）
+              <input type="color" data-path="colors.inkSoft" data-color-input="colors.inkSoft" />
+              <input type="text" data-path="colors.inkSoft" class="color-text" />
+            </label>
+          </div>
+          <div class="color-row">
+            <label>辅助蓝（blue）
+              <input type="color" data-path="colors.blue" data-color-input="colors.blue" />
+              <input type="text" data-path="colors.blue" class="color-text" />
+            </label>
+            <label>强调紫（accent）
+              <input type="color" data-path="colors.accent" data-color-input="colors.accent" />
+              <input type="text" data-path="colors.accent" class="color-text" />
+            </label>
+          </div>
+          <div class="color-row">
+            <label>次要文字（muted）
+              <input type="color" data-path="colors.muted" data-color-input="colors.muted" />
+              <input type="text" data-path="colors.muted" class="color-text" />
+            </label>
+          </div>
+          <div class="sub-heading">字号与间距</div>
+          <label>基础字号（px）
+            <input type="range" data-path="typography.baseSize" data-type="number" min="12" max="22" step="1" />
+            <output data-output="typography.baseSize"></output>
+          </label>
+          <label>首屏大标题（vw）
+            <input type="range" data-path="typography.heroTitle" data-type="number" min="4" max="11" step="0.5" />
+            <output data-output="typography.heroTitle"></output>
+          </label>
+          <label>分区大标题（vw）
+            <input type="range" data-path="typography.sectionTitle" data-type="number" min="4" max="12" step="0.5" />
+            <output data-output="typography.sectionTitle"></output>
+          </label>
+          <label>区块间距（rem）
+            <input type="range" data-path="typography.sectionSpace" data-type="number" min="3" max="16" step="1" />
+            <output data-output="typography.sectionSpace"></output>
+          </label>
+          <div class="sub-heading">动效</div>
+          <label>过渡动画时长（ms）
+            <input type="range" data-path="motion.transition" data-type="number" min="300" max="1400" step="50" />
+            <output data-output="motion.transition"></output>
+          </label>
+        </section>
+
+        <section class="panel-footer">
+          <button class="secondary-button" id="reset-button-bottom" type="button">恢复默认</button>
+          <button class="primary-button" id="save-button-bottom" type="button">保存修改</button>
+        </section>
+      </aside>
+
+      <section class="preview-panel">
+        <div class="preview-toolbar">
+          <span>REAL-TIME PREVIEW</span>
+          <span>保存后，前台刷新即可生效</span>
+        </div>
+        <div class="preview-frame">
+          <iframe id="preview" src="index.html" title="前台实时预览"></iframe>
+        </div>
+      </section>
+    </div>
+
+    <script src="site-config.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
