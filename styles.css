@@ -686,7 +686,7 @@ main { position: relative; }
 
 .view-all-projects { margin: 0 0 60px; text-align: center; }
 .view-all-link { display: inline-flex; align-items: center; gap: 10px; font-size: 18px; color: #fff; text-decoration: none; transition: color .3s; }
-.view-all-link:hover { color: #fea9c8; }
+.view-all-link:hover { color: #5f5fff; }
 .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px 48px; }
 .featured-card:nth-child(2), .featured-card:nth-child(3) { margin-left: 0; }
 .featured-0 { grid-column: auto; }
@@ -1327,7 +1327,7 @@ main { position: relative; }
 }
 .site-footer small { display: block; margin-bottom: 13px; color: #8a8a8a; font-size: 11px; }
 .site-footer .footer-top a { font-size: 16px; font-weight: 500; color: #fff; text-decoration: none; }
-.site-footer .footer-top a:hover { color: #fea9c8; }
+.site-footer .footer-top a:hover { color: #5f5fff; }
 .site-footer .social-links { display: flex; gap: 9px; flex-wrap: wrap; }
 .site-footer .social-links a {
   display: inline-flex;

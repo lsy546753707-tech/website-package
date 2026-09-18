@@ -635,16 +635,16 @@ function findProject(title) {
 
 /* —— 详情弹窗瀑布流（Masonry 动效：blur 聚焦 + 底部飞入 + stagger + 悬停缩放） —— */
 const MODAL_IMAGES = [
-  'assets/marketing/万圣节_v3-01.png',
-  'assets/marketing/万圣节_v3-03.png',
+  'assets/marketing/万圣节_v4-02.png',
+  'assets/marketing/万圣节_v4-02.png',
   'assets/marketing/妇女节.png',
-  'assets/marketing/干货分享-01.png',
-  'assets/marketing/成分解析_v2_画板_1.png',
+  'assets/3d/干货分享-01.png',
+  'assets/marketing/成分解析_v2_画板 1.png',
   'assets/marketing/悠闲-封面.jpg',
   'assets/marketing/新年_v2-03.png',
   'assets/marketing/旅行-01.png',
-  'assets/marketing/沐浴油_画板_1.png',
-  'assets/marketing/端午.png',
+  'assets/marketing/沐浴油_画板 1.png',
+  'assets/aigc/端午.png',
   'assets/marketing/浴室-封面.jpg',
   'assets/marketing/数据-01.png'
 ];
