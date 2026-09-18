@@ -1442,16 +1442,16 @@ em, .hero h1 em, h2 em, .section-heading h2 em, .contact-section h2 em,
   background-position: center;
 }
 .works-section .capability-card.cap-n01 .cap-visual {
-  background-image: url('assets/cards/公众号品牌介绍封面-02.png');
+  background-image: url('assets/cards/公众号品牌介绍封面-02.webp');
 }
 .works-section .capability-card.cap-n02 .cap-visual {
   background-image: url('assets/cards/kv.jpg?v=3');
 }
 .works-section .capability-card.cap-n03 .cap-visual {
-  background-image: url('assets/cards/玻璃花纹.png');
+  background-image: url('assets/cards/玻璃花纹.webp');
 }
 .works-section .capability-card.cap-n04 .cap-visual {
-  background-image: url('assets/cards/公众号P7封面.png');
+  background-image: url('assets/cards/公众号P7封面.webp');
 }
 
 /* ===== 隐藏能力卡视觉区中央装饰图标（用户要求删除） ===== */

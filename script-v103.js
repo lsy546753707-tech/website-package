@@ -8,7 +8,7 @@ const seqFrames = { '0-1': [], '1-0': [], '1-2': [], '2-1': [] };
   for (let i = 0; i < SEQ_COUNT; i++) {
     const img = new Image();
     img.onload = () => updateScrollProgress();
-    img.src = `assets/${folder}/${folder}_${String(i).padStart(2, '0')}.png?v=2`;
+    img.src = `assets/${folder}/${folder}_${String(i).padStart(2, '0')}.webp?v=2`;
     seqFrames[key].push(img);
   }
 });
@@ -79,7 +79,7 @@ function setSceneCopyFields(cfg) {
     if (link) link.innerHTML = `${escapeHtml(c.worksLink)} <span>↗</span>`;
   }
   const heroName = document.querySelector('.hero-name');
-  if (heroName) heroName.innerHTML = '<img class="hero-brand-img" src="assets/hero/brand-logo.png" alt="SHUYAN" /><small class="hero-role-img"><img src="assets/hero/brand-visual.png" alt="BRAND AND VISUAL DESIGN" /></small>';
+  if (heroName) heroName.innerHTML = '<img class="hero-brand-img" src="assets/hero/brand-logo.webp" alt="SHUYAN" /><small class="hero-role-img"><img src="assets/hero/brand-visual.webp" alt="BRAND AND VISUAL DESIGN" /></small>';
 }
 
 function renderProjects(cfg) {
@@ -635,18 +635,18 @@ function findProject(title) {
 
 /* —— 详情弹窗瀑布流（Masonry 动效：blur 聚焦 + 底部飞入 + stagger + 悬停缩放） —— */
 const MODAL_IMAGES = [
-  'assets/marketing/万圣节_v4-02.png',
-  'assets/marketing/万圣节_v4-02.png',
-  'assets/marketing/妇女节.png',
-  'assets/3d/干货分享-01.png',
-  'assets/marketing/成分解析_v2_画板 1.png',
+  'assets/marketing/万圣节_v4-02.webp',
+  'assets/marketing/万圣节_v4-02.webp',
+  'assets/marketing/妇女节.webp',
+  'assets/3d/干货分享-01.webp',
+  'assets/marketing/成分解析_v2_画板 1.webp',
   'assets/marketing/悠闲-封面.jpg',
-  'assets/marketing/新年_v2-03.png',
-  'assets/marketing/旅行-01.png',
-  'assets/marketing/沐浴油_画板 1.png',
-  'assets/aigc/端午.png',
+  'assets/marketing/新年_v2-03.webp',
+  'assets/marketing/旅行-01.webp',
+  'assets/marketing/沐浴油_画板 1.webp',
+  'assets/aigc/端午.webp',
   'assets/marketing/浴室-封面.jpg',
-  'assets/marketing/数据-01.png'
+  'assets/marketing/数据-01.webp'
 ];
 function buildMasonryItems(project) {
   const num = String(project?.number || '0').replace(/\D/g, '');
@@ -663,9 +663,9 @@ function buildMasonryItems(project) {
     if (isVideo) {
       media = `<video class="mg-img" src="${src}" controls preload="metadata" playsinline muted style="min-height:260px;background:#000"></video>`;
     } else if (w > 0 && h > 0) {
-      media = `<img class="mg-img" src="${src}" alt="" style="aspect-ratio:${w}/${h};background:#e9e9e9">`;
+      media = `<img class="mg-img" loading="lazy" src="${src}" alt="" style="aspect-ratio:${w}/${h};background:#e9e9e9">`;
     } else {
-      media = `<img class="mg-img" src="${src}" alt="" style="min-height:260px;background:#e9e9e9">`;
+      media = `<img class="mg-img" loading="lazy" src="${src}" alt="" style="min-height:260px;background:#e9e9e9">`;
     }
     return `<div class="mg-item" data-ar="${ratio}" data-v="${isVideo ? 1 : 0}"${isSpan} style="--d:${delay}s">${media}</div>`;
   }).join('');
