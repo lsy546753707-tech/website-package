@@ -686,7 +686,7 @@ main { position: relative; }
 
 .view-all-projects { margin: 0 0 60px; text-align: center; }
 .view-all-link { display: inline-flex; align-items: center; gap: 10px; font-size: 18px; color: #fff; text-decoration: none; transition: color .3s; }
-.view-all-link:hover { color: #fea9c8; }
+.view-all-link:hover { color: #5f5fff; }
 .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px 48px; }
 .featured-card:nth-child(2), .featured-card:nth-child(3) { margin-left: 0; }
 .featured-0 { grid-column: auto; }
@@ -1327,7 +1327,7 @@ main { position: relative; }
 }
 .site-footer small { display: block; margin-bottom: 13px; color: #8a8a8a; font-size: 11px; }
 .site-footer .footer-top a { font-size: 16px; font-weight: 500; color: #fff; text-decoration: none; }
-.site-footer .footer-top a:hover { color: #fea9c8; }
+.site-footer .footer-top a:hover { color: #5f5fff; }
 .site-footer .social-links { display: flex; gap: 9px; flex-wrap: wrap; }
 .site-footer .social-links a {
   display: inline-flex;
@@ -1442,16 +1442,16 @@ em, .hero h1 em, h2 em, .section-heading h2 em, .contact-section h2 em,
   background-position: center;
 }
 .works-section .capability-card.cap-n01 .cap-visual {
-  background-image: url('assets/cards/公众号品牌介绍封面-02.png');
+  background-image: url('assets/cards/公众号品牌介绍封面-02.webp');
 }
 .works-section .capability-card.cap-n02 .cap-visual {
   background-image: url('assets/cards/kv.jpg?v=3');
 }
 .works-section .capability-card.cap-n03 .cap-visual {
-  background-image: url('assets/cards/玻璃花纹.png');
+  background-image: url('assets/cards/玻璃花纹.webp');
 }
 .works-section .capability-card.cap-n04 .cap-visual {
-  background-image: url('assets/cards/公众号P7封面.png');
+  background-image: url('assets/cards/公众号P7封面.webp');
 }
 
 /* ===== 隐藏能力卡视觉区中央装饰图标（用户要求删除） ===== */
